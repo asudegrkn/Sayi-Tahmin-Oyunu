@@ -5,9 +5,15 @@ var tahmin = document.querySelector("#tahmin");
 var baslat = document.querySelector("#baslat");
 var sayi = document.querySelector("#sayi");
 
+function randomInt(min, max) {
+
+ return Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    
+} 
 baslat.onclick = function () {
   tahmin.disabled = false;
-  randomSayi = Math.round(Math.random() * 1000);
+  randomSayi = randomInt(100, 1000);
   sayac = 0;
   alert(randomSayi);
 };
@@ -20,8 +26,11 @@ tahmin.onclick = function () {
   var randomSayiOnlar = Math.floor(randomSayi / 100 / 10);
   var randomSayiBirler = (randomSayi % 100) % 10;
 
-  if (sayi.value >= 1000) alert("Maksimum 3 basamaklı sayı giriniz");
+  if (sayi.value >= 1000 || sayi.value <= 100) 
+    alert("3 basamaklı sayı giriniz");
+  
   sayac++;
+  
   if (randomSayi != sayi.value && sayac > hak) {
     alert("Hakkınız kalmadı.");
   }
